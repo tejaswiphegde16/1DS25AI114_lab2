@@ -1,167 +1,109 @@
 #include <stdio.h>
 
 int main() {
-//Traversal
-    int a[10]={1,21,43,54,45,96,17,38,29,10};
-    #include <stdio.h>
+    // Array capacity is 20 to safely allow insertions, current size is 10
+    int a[20] = {1, 21, 43, 54, 45, 96, 17, 38, 29, 10};
+    int size = 10;
 
-int main() {
-//Traversal
-    int a[10]={1,21,43,54,45,96,17,38,29,10};
-    for (int i=0;i<10;i++){
-        printf("Element %d is %d\n ",i,a[i]);
+    // 1. Traversal
+    printf("--- Array Traversal ---\n");
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
     }
-//Search
+
+    // 2. Search
+    printf("\n--- Search ---\n");
     int val = 54;
-    for (int i=0;i<10;i++){
-        if(a[i]==val){
-            printf("Element %d found at %d" , val,i);
+    for (int i = 0; i < size; i++) {
+        if (a[i] == val) {
+            printf("Element %d found at index %d\n", val, i);
         }
     }
-    
-// Max and min
-    int max=a[0];
-    for (int i=0;i<10;i++){
-        if(a[i]>max){
-           max=a[i];
-        }
-       
-    }
-    
-    int min=a[0];
-    for (int i=0;i<10;i++){
-        if(a[i]<min){
-           min=a[i];
-        }
-        
-    }
-    printf("\n Max=%d",max);
-    printf("\nMin=%d",min);
-    
-// insertion at position
-    
-    int pos,num;
-    printf("\nEnter number needs to be added: ");
-    scanf("%d",&num);
-    printf("\n Enter position at which you number needs to be added: ");
-    scanf("%d",&pos);
 
-    
-    for (int i=11;i>=pos;i--){
-        if (i==(pos)){
-            a[i]=num ;
+    // 3. Max and Min
+    printf("\n--- Max and Min ---\n");
+    int max = a[0];
+    int min = a[0];
+    for (int i = 1; i < size; i++) {
+        if (a[i] > max) max = a[i];
+        if (a[i] < min) min = a[i];
     }
-}
-     for (int i=0;i<10;i++){
-        printf("\nElement %d is %d\n ",i,a[i]);
-    }
-    
-    
-    
-// deletion at given position
+    printf("Max = %d\n", max);
+    printf("Min = %d\n", min);
 
+    // 4. Sum of all elements
+    printf("\n--- Sum of Elements ---\n");
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += a[i];
+    }
+    printf("Sum = %d\n", sum);
 
-
-
-
-
-
-}
-
-//Search
-    int val = 54;
-    for (int i=0;i<10;i++){
-        if(a[i]==val){
-            printf("Element %d found at %d" , val,i);
-        }
+    // 5. Insertion at Beginning
+    printf("\n--- Insertion at Beginning ---\n");
+    int numb = 12;
+    for (int i = size; i > 0; i--) {
+        a[i] = a[i - 1];
     }
-    
-// Max and min
-    int max=a[0];
-    for (int i=0;i<10;i++){
-        if(a[i]>max){
-           max=a[i];
-        }
-       
-    }
-    
-    int min=a[0];
-    for (int i=0;i<10;i++){
-        if(a[i]<min){
-           min=a[i];
-        }
-        
-    }
-    printf("\n Max=%d",max);
-    printf("\nMin=%d",min);
-    
-// insertion at beginning
-    
-    int numb=12;
-    
-    for (int i=10;i>=0;i--){
-        a[i+1]=a[i];
-    }
-    a[0]=numb;
-    
-    printf("\nat Beginning\n");
-    for (int i=0;i<10;i++){
-        printf("Element %d is %d\n ",i,a[i]);
-    }
-    
-//at any pos
-    int nump=14;
-    int pos=3;
-    
-    for (int i=0 ;i<10;i++){
-        if (i==pos){
-            a[i]=nump;
-        }
-    }
-    printf("\nat pos\n");
-    for (int i=0;i<10;i++){
-        printf("Element %d is %d\n ",i,a[i]);
-    }
-//at end 
-    int nume=4578;
-    for(int i=0;i<10;i++){
-        a[i]=a[i+1];
-    }
-    a[9]=nume;
-    printf("\nat end\n");
-    for (int i=0;i<10;i++){
-        printf("Element %d is %d\n ",i,a[i]);
+    a[0] = numb;
+    size++; // Increase size after insertion
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
     }
 
-
-// deletion at beginning
-    
-
-    for(int i=0;i<10;i++){
-        a[i]=a[i+1];
+    // 6. Insertion at Specific Index (e.g., index 3)
+    printf("\n--- Insertion at Index 3 ---\n");
+    int nump = 14;
+    int pos = 3;
+    for (int i = size; i > pos; i--) {
+        a[i] = a[i - 1];
+    }
+    a[pos] = nump;
+    size++; // Increase size
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
     }
 
-    int n = 10;
+    // 7. Insertion at End
+    printf("\n--- Insertion at End ---\n");
+    int nume = 4578;
+    a[size] = nume;
+    size++; // Increase size
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
+    }
+
+    // 8. Deletion at Beginning
+    printf("\n--- Deletion at Beginning ---\n");
+    for (int i = 0; i < size - 1; i++) {
+        a[i] = a[i + 1];
+    }
+    size--; // Decrease size
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
+    }
+
+    // 9. Deletion at Specific Index (e.g., index 4)
+    printf("\n--- Deletion at Index 4 ---\n");
     int posd = 4;
-    if(posd>=1 && posd<=n){
-        for (int i= posd-1 ;i<n-1;i++){
-            a[i]=a[i+1];
-        } 
-        n--;
+    if (posd >= 0 && posd < size) {
+        for (int i = posd; i < size - 1; i++) {
+            a[i] = a[i + 1];
+        }
+        size--; // Decrease size
     }
-    
-printf("\n deletion at pos %d",posd);
-    for (int i=0;i<10;i++){
-        printf("\nElement %d is %d ",i,a[i]);
-    }
-//deletion at  end 
-    if (n>0){
-        n--;
-    }
-    printf("\n deletion at end ");
-    for (int i=0;i<10;i++){
-        printf("\nElement %d is %d ",i,a[i]);
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
     }
 
+    // 10. Deletion at End
+    printf("\n--- Deletion at End ---\n");
+    if (size > 0) {
+        size--; // Simply decrement size to remove the last element
+    }
+    for (int i = 0; i < size; i++) {
+        printf("Element %d is %d\n", i, a[i]);
+    }
+
+    return 0;
 }
-// Also add sum of all elements of array code
