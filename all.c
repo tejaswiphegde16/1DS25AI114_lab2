@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    // Array capacity is 20 to safely allow insertions, current size is 10
     int a[20] = {1, 21, 43, 54, 45, 96, 17, 38, 29, 10};
     int size = 10;
 
