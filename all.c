@@ -164,3 +164,4 @@ printf("\n deletion at pos %d",posd);
     }
 
 }
+// Also add sum of all elements of array code
